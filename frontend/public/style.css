@@ -1,0 +1,126 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* Navigation */
+header {
+    background: #1e1e1e;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #ff9800;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff9800;
+}
+
+/* Hero Section */
+.hero {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(to right, #ff9800, #ff5722);
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.hero-content button {
+    padding: 12px 25px;
+    font-size: 1.2em;
+    border: none;
+    background: #ffffff;
+    color: #ff5722;
+    cursor: pointer;
+    transition: background 0.3s;
+    border-radius: 5px;
+}
+
+.hero-content button:hover {
+    background: #ffcc80;
+}
+
+/* Sections */
+section {
+    padding: 60px 10%;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#features ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+#features ul li {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #1e1e1e;
+    border-radius: 5px;
+    display: inline-block;
+    width: 60%;
+}
+
+/* Marketplace Section */
+#marketplace {
+    text-align: center;
+    background: #1e1e1e;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #1e1e1e;
+    margin-top: 40px;
+}
