@@ -2,14 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Marketplace | HobbyBlockNFT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HobbyBlockNFT Marketplace</title>
+    <script defer src="script.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
-        <a href="index.html">
-        <img src="images/logo.png" alt="HobbyBlockNFT Logo" width="200">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="HobbyBlockNFT Logo">
         </a>
+        <div class="search-bar">
+            <input type="text" placeholder="Search items, collections, and accounts">
+            <i class="fas fa-search"></i>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -19,12 +26,86 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+        <button class="wallet-connect">Connect Wallet</button>
+        <div class="mobile-menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
     </header>
+
     <div class="main-content">
-        <section id="marketplace">
-            <h2>Explore the Marketplace</h2>
-            <p>Discover rare and unique digital assets.</p>
+        <!-- Marketplace Hero Section -->
+        <section class="marketplace-hero">
+            <div class="container">
+                <h1>Explore, Collect, and Trade NFTs</h1>
+                <p>Discover rare digital items and collect unique NFTs from thousands of creators.</p>
+                <button class="wallet-connect">Connect Wallet to Start</button>
+            </div>
         </section>
+
+        <div class="container">
+            <!-- Filter Section -->
+            <section class="filter-section">
+                <div class="filter-controls">
+                    <select class="filter-dropdown">
+                        <option>All Categories</option>
+                        <option>Art</option>
+                        <option>Music</option>
+                        <option>Sports</option>
+                        <option>Photography</option>
+                        <option>Virtual Worlds</option>
+                    </select>
+                    <select class="filter-dropdown">
+                        <option>Recently Added</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Most Viewed</option>
+                    </select>
+                    <select class="filter-dropdown">
+                        <option>All Chains</option>
+                        <option>Ethereum</option>
+                        <option>Solana</option>
+                        <option>Polygon</option>
+                    </select>
+                </div>
+                <div class="filter-tags">
+                    <div class="filter-tag active">All</div>
+                    <div class="filter-tag">Art</div>
+                    <div class="filter-tag">Collectibles</div>
+                    <div class="filter-tag">Music</div>
+                    <div class="filter-tag">Photography</div>
+                </div>
+            </section>
+
+            <div class="collection-card" data-category="Art">
+                <div class="collection-image">
+                    <img src="images/NFTs 1.jpg" alt="Art Collection">
+                </div>
+                <h3>Digital Dreamscapes</h3>
+                <div class="collection-details">
+                    <div class="price-info">
+                        <span class="label">Floor</span>
+                        <span class="value">3.13 ETH</span>
+                    </div>
+                    <div class="price-info">
+                        <span class="label">Total volume</span>
+                        <span class="value">352K ETH</span>
+                    </div>
+                </div>
+                <div class="collection-image">
+                    <img src="images/NFT2.png" alt="Art Collection">
+                </div>
+                <h3>Digital Dreamscapes</h3>
+                <div class="collection-details">
+                    <div class="price-info">
+                        <span class="label">Floor</span>
+                        <span class="value">3.13 ETH</span>
+                    </div>
+                    <div class="price-info">
+                        <span class="label">Total volume</span>
+                        <span class="value">352K ETH</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
-</html>
