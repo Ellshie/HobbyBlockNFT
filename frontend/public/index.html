@@ -19,31 +19,36 @@
             background-color: #09122C;
             color: #ffffff;
             line-height: 1.6;
+            display: flex;
         }
 
-        /* Navigation */
+        /* Side Navigation */
         header {
             background: #872341;
-            padding: 15px 20px;
+            padding: 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            height: 100vh;
+            width: 250px;
+            box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.2);
         }
 
         .logo {
             font-size: 1.8em;
             font-weight: bold;
             color: #E17564;
+            margin-bottom: 30px;
         }
 
         nav ul {
             list-style: none;
-            display: flex;
+            width: 100%;
         }
 
         nav ul li {
-            margin: 0 15px;
+            margin: 20px 0;
+            text-align: center;
         }
 
         nav ul li a {
@@ -55,6 +60,12 @@
 
         nav ul li a:hover {
             color: #E17564;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 20px;
         }
 
         /* Hero Section */
@@ -139,46 +150,27 @@
 </head>
 <body>
     <header>
+        <div class="logo">HobbyBlockNFT</div>
         <nav>
-            <div class="logo">HobbyBlockNFT</div>
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#marketplace">Marketplace</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="marketplace.html">Marketplace</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Welcome to HobbyBlockNFT</h1>
-            <p>Own, trade, and showcase your favorite digital collectibles on the blockchain.</p>
-            <button onclick="connectWallet()">Connect Wallet</button>
-        </div>
-    </section>
-
-    <section id="about">
-        <h2>About HobbyBlockNFT</h2>
-        <p>HobbyBlockNFT is a platform for hobbyists and collectors to mint, trade, and showcase NFTs securely.</p>
-    </section>
-
-    <section id="features">
-        <h2>Features</h2>
-        <ul>
-            <li>Decentralized NFT Marketplace</li>
-            <li>Secure Blockchain Transactions</li>
-            <li>Exclusive Collectibles</li>
-        </ul>
-    </section>
-
-    <section id="marketplace">
-        <h2>Explore the Marketplace</h2>
-        <p>Discover rare and unique digital assets.</p>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 HobbyBlockNFT. All Rights Reserved.</p>
-    </footer>
+    <div class="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to HobbyBlockNFT</h1>
+                <p>Own, trade, and showcase your favorite digital collectibles on the blockchain.</p>
+                <button onclick="connectWallet()">Connect Wallet</button>
+            </div>
+        </section>
+        <footer>
+            <p>&copy; 2025 HobbyBlockNFT. All Rights Reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
