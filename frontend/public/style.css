@@ -15,7 +15,7 @@ body {
 }
 
 header {
-    background: #123962;
+    background: linear-gradient(to right, #123962, #00aee6);
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -24,20 +24,13 @@ header {
     width: 250px;
 }
 
-.logo {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: #E17564;
-    margin-bottom: 30px;
-}
-
 nav ul {
     list-style: none;
     width: 100%;
 }
 
 nav ul li {
-    margin: 20px 0;
+    margin: 10px 0;
     text-align: center;
 }
 
@@ -45,10 +38,16 @@ nav ul li a {
     color: #ffffff;
     text-decoration: none;
     font-size: 1.2em;
+    padding: 10px 20px;
+    display: block;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #E17564;
+    background-color: #123962;
+    color: #ffffff;
+    transform: scale(1.05); /* Slightly enlarges on hover */
 }
 
 .main-content {
@@ -76,7 +75,7 @@ h2 {
 
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 25px;
     background: #872341;
     color: #E17564;
 }
