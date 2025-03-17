@@ -11,7 +11,7 @@
         /* Main Content */
         .main-content {
             flex: 1;
-            padding: 0;
+            padding: 0px;
         }
 
         /* Hero Section */
@@ -21,7 +21,11 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(to right, #872341, #BE3144);
+            background-image: url('images/home-bg.jpg');
+            background-size: cover;       
+            background-position: center;  
+            background-repeat: no-repeat; 
+            background-attachment: fixed;
         }
 
         .hero-content h1 {
@@ -38,15 +42,16 @@
             padding: 12px 25px;
             font-size: 1.2em;
             border: none;
-            background: #E17564;
-            color: #09122C;
+            background: #2754ba;
+            color: #FFFF;
             cursor: pointer;
             transition: background 0.3s;
             border-radius: 5px;
         }
 
         .hero-content button:hover {
-            background: #BE3144;
+            background: #b1d4e5;
+            color: #09122C;
         }
     </style>
 </head>
