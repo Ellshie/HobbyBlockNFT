@@ -476,3 +476,22 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+.filter-tag {
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background-color: #2a2a2a;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.filter-tag.active {
+    background-color: #3498db;
+    color: white;
+}
+
+.filter-tag:hover {
+    background-color: #3498db;
+    opacity: 0.8;
+}
