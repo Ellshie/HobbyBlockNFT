@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ethers } from "ethers";
 import HobbyBlockNFT from "./contracts/HobbyBlockNFT.json";
 
-const CONTRACT_ADDRESS = "YOUR_DEPLOYED_CONTRACT_ADDRESS";
+const CONTRACT_ADDRESS = "0xB120a75F06288Af11b78f062EBe76cCC6aBE1C9b";
 
 function App() {
     const [account, setAccount] = useState(null);

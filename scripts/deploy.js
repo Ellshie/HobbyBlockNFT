@@ -3,7 +3,7 @@ const { network } = require('hardhat');
 const HobbyBlockArtifact = require('../artifacts/contracts/HobbyBlockNFT.sol/HobbyBlockNFT.json');
 
 async function main() {
-    if (network.name !== 'sepolia' && network.name !== 'localhost') {
+    if (network.name !== 'sepolia' && network.name !== 'ganache') {
         throw new Error('Please run the deployment script on the Sepolia network or localhost Hardhat network');
     }
 

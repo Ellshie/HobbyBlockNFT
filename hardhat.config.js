@@ -1,17 +1,20 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 
+/** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: {
-    compilers: [
-      { version: "0.8.0" },
-      { version: "0.8.20" }
-    ]
-  },
+  solidity: "0.8.20",
   networks: {
-    testnet: {
-      url: "https://data-seed-prebsc-1-s1.binance.org:8545/",
-      accounts: [process.env.PRIVATE_KEY]
+    ganache: {
+      url: "http://127.0.0.1:7545",
+      accounts: {
+        mnemonic: "army swear pelican pill stem blouse local coast neglect rich figure can", 
+      },
+      chainId: 1337
     }
+  },
+  paths: {
+    sources: "./contracts",
+    artifacts: "./artifacts"
   }
 };

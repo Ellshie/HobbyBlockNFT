@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let nftContract = null; // Contract instance
     
     // NFT Contract Address - Replace with your actual contract address
-    const nftContractAddress = "0x123456789abcdef123456789abcdef123456789a"; // Replace with your contract address
+    const nftContractAddress = "0xB120a75F06288Af11b78f062EBe76cCC6aBE1C9b"; // Replace with your contract address
     
     // Load ABI file
     async function loadContractABI() {

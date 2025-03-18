@@ -727,7 +727,7 @@ async function purchaseNFT(nftTitle, price) {
         
         // Create transaction parameters
         const transactionParameters = {
-            to: '0x3e98f498445D8995DDe2a61419D9EcCCBc9BE39C', // Replace with actual contract address
+            to: '0x56dc2A619700CBc10d04917705439FB68C0078e6', // Replace with actual contract address
             from: walletAddress,
             value: web3.utils.toHex(priceInWei),
             gas: web3.utils.toHex(210000),
