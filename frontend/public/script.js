@@ -47,37 +47,49 @@ async function connectWallet() {
     }
 }
 
-// Function to handle NFT purchase
 async function purchaseNFT(nftTitle, price) {
-    if (!walletAddress) {
-        const connected = await connectWallet();
-        if (!connected) {
-            alert('Please connect your wallet to purchase this NFT.');
+    try {
+        // Check if MetaMask is installed
+        if (!window.ethereum) {
+            alert('MetaMask is not installed. Please install MetaMask to continue.');
             return;
         }
-    }
-    
-    try {
-        if (!window.web3) {
-            if (window.ethereum) {
-                window.web3 = new Web3(window.ethereum);
-            } else {
-                alert('Web3 not detected. Please install MetaMask.');
+        
+        // Request account access if needed
+        if (!walletAddress) {
+            try {
+                const accounts = await window.ethereum.request({ 
+                    method: 'eth_requestAccounts' 
+                });
+                walletAddress = accounts[0];
+                console.log("Wallet connected:", walletAddress);
+            } catch (error) {
+                console.error("User denied account access:", error);
+                alert('Please connect your wallet to purchase this NFT.');
                 return;
             }
         }
         
-        // Convert price from ETH to Wei (1 ETH = 10^18 Wei)
-        const priceInWei = window.web3.utils.toWei(price, 'ether');
+        // Initialize web3
+        const web3 = new Web3(window.ethereum);
+        
+        // Convert price from ETH to Wei
+        const priceInWei = web3.utils.toWei(price.toString(), 'ether');
+        
+        console.log("Preparing transaction...");
+        console.log("From address:", walletAddress);
+        console.log("Price in Wei:", priceInWei);
         
         // Create transaction parameters
         const transactionParameters = {
-            to: '0xYourMarketplaceContractAddress', // Replace with your actual contract address
+            to: '0xDDaC8A947691039d3056b4Cad9f6217f8Cf3aE58', // Replace with actual contract address
             from: walletAddress,
-            value: window.web3.utils.toHex(priceInWei),
-            gas: window.web3.utils.toHex(210000), // Adjust gas as needed
-            gasPrice: window.web3.utils.toHex(window.web3.utils.toWei('50', 'gwei'))
+            value: web3.utils.toHex(priceInWei),
+            gas: web3.utils.toHex(210000),
+            gasPrice: web3.utils.toHex(web3.utils.toWei('50', 'gwei'))
         };
+        
+        console.log("Transaction parameters:", transactionParameters);
         
         // Send transaction
         const txHash = await window.ethereum.request({
@@ -85,11 +97,12 @@ async function purchaseNFT(nftTitle, price) {
             params: [transactionParameters],
         });
         
+        console.log("Transaction sent! Hash:", txHash);
         alert(`Purchase successful! Transaction Hash: ${txHash}`);
         
     } catch (error) {
         console.error("Error during purchase:", error);
-        alert('Transaction failed. Please try again.');
+        alert(`Transaction failed: ${error.message}`);
     }
 }
 
