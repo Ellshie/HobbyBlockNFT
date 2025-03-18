@@ -1,21 +1,168 @@
-// script.js
 console.log("script.js loaded!");
 
+// Global variables
+let walletAddress = null;
+const walletConnectButtons = document.querySelectorAll('.wallet-connect');
+
+// Connect to MetaMask wallet
 async function connectWallet() {
     if (window.ethereum) {
         try {
-            const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-            alert("Connected to: " + accounts[0]);
+            // Request account access
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            walletAddress = accounts[0];
+            
+            // Update all wallet connect buttons
+            walletConnectButtons.forEach(button => {
+                button.textContent = `${walletAddress.substring(0, 6)}...${walletAddress.substring(38)}`;
+                button.classList.add('connected');
+            });
+            
+            // Listen for account changes
+            window.ethereum.on('accountsChanged', function (accounts) {
+                if (accounts.length === 0) {
+                    // User disconnected wallet
+                    walletAddress = null;
+                    walletConnectButtons.forEach(button => {
+                        button.textContent = 'Connect Wallet';
+                        button.classList.remove('connected');
+                    });
+                } else {
+                    walletAddress = accounts[0];
+                    walletConnectButtons.forEach(button => {
+                        button.textContent = `${walletAddress.substring(0, 6)}...${walletAddress.substring(38)}`;
+                    });
+                }
+            });
+            
+            console.log("Connected to: " + accounts[0]);
+            return true; // Connection successful
         } catch (error) {
             console.error("Connection failed:", error);
+            return false; // Connection failed
         }
     } else {
         alert("MetaMask not detected. Please install it.");
+        return false;
     }
 }
 
+// Function to handle NFT purchase
+async function purchaseNFT(nftTitle, price) {
+    if (!walletAddress) {
+        const connected = await connectWallet();
+        if (!connected) {
+            alert('Please connect your wallet to purchase this NFT.');
+            return;
+        }
+    }
+    
+    try {
+        if (!window.web3) {
+            if (window.ethereum) {
+                window.web3 = new Web3(window.ethereum);
+            } else {
+                alert('Web3 not detected. Please install MetaMask.');
+                return;
+            }
+        }
+        
+        // Convert price from ETH to Wei (1 ETH = 10^18 Wei)
+        const priceInWei = window.web3.utils.toWei(price, 'ether');
+        
+        // Create transaction parameters
+        const transactionParameters = {
+            to: '0xYourMarketplaceContractAddress', // Replace with your actual contract address
+            from: walletAddress,
+            value: window.web3.utils.toHex(priceInWei),
+            gas: window.web3.utils.toHex(210000), // Adjust gas as needed
+            gasPrice: window.web3.utils.toHex(window.web3.utils.toWei('50', 'gwei'))
+        };
+        
+        // Send transaction
+        const txHash = await window.ethereum.request({
+            method: 'eth_sendTransaction',
+            params: [transactionParameters],
+        });
+        
+        alert(`Purchase successful! Transaction Hash: ${txHash}`);
+        
+    } catch (error) {
+        console.error("Error during purchase:", error);
+        alert('Transaction failed. Please try again.');
+    }
+}
+
+// Function to show NFT modal
+function showNFTModal(title, image, price) {
+    // Create modal elements
+    const modal = document.createElement('div');
+    modal.className = 'nft-modal';
+    
+    // Extract the ETH price value
+    const ethPrice = price.split(' ')[0];
+    
+    // Modal content
+    modal.innerHTML = `
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-image">
+                <img src="${image}" alt="${title}">
+            </div>
+            <div class="modal-info">
+                <h2>${title}</h2>
+                <div class="modal-price">
+                    <span class="label">Price:</span>
+                    <span class="value">${price}</span>
+                </div>
+                <button class="buy-button" data-price="${ethPrice}">Buy Now</button>
+            </div>
+        </div>
+    `;
+    
+    // Add modal to body
+    document.body.appendChild(modal);
+    
+    // Close modal when clicking the close button
+    const closeBtn = modal.querySelector('.close-modal');
+    closeBtn.addEventListener('click', function() {
+        document.body.removeChild(modal);
+    });
+    
+    // Close modal when clicking outside the content
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            document.body.removeChild(modal);
+        }
+    });
+    
+    // Buy button functionality
+    const buyButton = modal.querySelector('.buy-button');
+    buyButton.addEventListener('click', async function() {
+        const price = this.dataset.price;
+        await purchaseNFT(title, price);
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
+    // Add event listeners to wallet connect buttons
+    walletConnectButtons.forEach(button => {
+        button.addEventListener('click', connectWallet);
+    });
+    
+    // Mobile menu toggle
+    const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
+    const navMenu = document.querySelector('nav ul');
+    
+    if (mobileMenuIcon) {
+        mobileMenuIcon.addEventListener('click', function() {
+            navMenu.classList.toggle('show');
+        });
+    }
+    
+    // Filter functionality
     const filterTags = document.querySelectorAll(".filter-tag");
+    const categoryFilter = document.getElementById('category-filter');
     const collectionCards = document.querySelectorAll(".collection-card");
 
     function filterCollections(category) {
@@ -38,9 +185,46 @@ document.addEventListener("DOMContentLoaded", function () {
             const category = this.getAttribute("data-category").trim().toLowerCase();
             console.log(`Filtering for category: ${category}`);
             filterCollections(category);
+            
+            // Update the dropdown to match
+            if (categoryFilter) {
+                categoryFilter.value = category;
+            }
+        });
+    });
+
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', function() {
+            const category = this.value;
+            filterCollections(category);
+            
+            // Update filter tags to match
+            filterTags.forEach(tag => {
+                if (tag.getAttribute('data-category') === category) {
+                    tag.classList.add('active');
+                } else {
+                    tag.classList.remove('active');
+                }
+            });
+        });
+    }
+    
+    // Make collection cards clickable
+    collectionCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const nftTitle = this.querySelector('h3').textContent;
+            const nftImage = this.querySelector('img').src;
+            const priceInfo = this.querySelector('.price-info .value').textContent;
+            
+            showNFTModal(nftTitle, nftImage, priceInfo);
         });
     });
 
     // Set default filter to 'all'
     filterCollections("all");
+    
+    // Initialize Web3 if MetaMask is available
+    if (window.ethereum) {
+        window.web3 = new Web3(window.ethereum);
+    }
 });
