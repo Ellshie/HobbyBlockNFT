@@ -46,13 +46,11 @@
             <!-- Filter Section -->
             <section class="filter-section">
                 <div class="filter-controls">
-                    <select class="filter-dropdown">
-                        <option>All Categories</option>
-                        <option>Art</option>
-                        <option>Music</option>
-                        <option>Sports</option>
-                        <option>Photography</option>
-                        <option>Virtual Worlds</option>
+                    <select class="filter-dropdown" id="category-filter">
+                        <option value="all">All Categories</option>
+                        <option value="art">Art</option>
+                        <option value="collectibles">Collectibles</option>
+                        <option value="photography">Photography</option>
                     </select>
                     <select class="filter-dropdown">
                         <option>Recently Added</option>
@@ -61,68 +59,205 @@
                         <option>Most Viewed</option>
                     </select>
                     <select class="filter-dropdown">
-                        <option>All Chains</option>
                         <option>Ethereum</option>
-                        <option>Solana</option>
-                        <option>Polygon</option>
                     </select>
                 </div>
                 <div class="filter-tags">
-                    <div class="filter-tag active">All</div>
-                    <div class="filter-tag">Art</div>
-                    <div class="filter-tag">Collectibles</div>
-                    <div class="filter-tag">Music</div>
-                    <div class="filter-tag">Photography</div>
+                    <div class="filter-tag active" data-category="all">All</div>
+                    <div class="filter-tag" data-category="art">Art</div>
+                    <div class="filter-tag" data-category="collectibles">Collectibles</div>
+                    <div class="filter-tag" data-category="photography">Photography</div>
                 </div>
             </section>
 
             <!-- Art Collections -->
-            <div class="collection-card" data-category="Art">
-                <div class="collection-image">
-                    <img src="images/NFTs 1.jpg" alt="Art Collection">
-                </div>
-                <h3>Digital Dreamscapes</h3>
-                <div class="collection-details">
-                    <div class="price-info">
-                        <span class="label">Floor</span>
-                        <span class="value">3.13 ETH</span>
+            <div class="collections-container">
+                <!-- Art Collections -->
+                <section class="category-section" id="art-collections">
+                    <h2 class="category-title">Art Collections</h2>
+                    <div class="collections-grid">
+                        <!-- Art Collection 1 -->
+                        <div class="collection-card" data-category="art">
+                            <div class="collection-image">
+                                <img src="images/NFTs 1.jpg" alt="Digital Dreamscapes">
+                            </div>
+                            <h3>Digital Dreamscapes</h3>
+                            <div class="collection-details">
+                                <div class="price-info">
+                                    <span class="label">Floor</span>
+                                    <span class="value">3.13 ETH</span>
+                                </div>
+                                <div class="price-info">
+                                    <span class="label">Total volume</span>
+                                    <span class="value">352K ETH</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Art Collection 2 -->
+                        <div class="collection-card" data-category="art">
+                            <div class="collection-image">
+                                <img src="images/NFT2.png" alt="Abstract Wonders">
+                            </div>
+                            <h3>Abstract Wonders</h3>
+                            <div class="collection-details">
+                                <div class="price-info">
+                                    <span class="label">Floor</span>
+                                    <span class="value">2.45 ETH</span>
+                                </div>
+                                <div class="price-info">
+                                    <span class="label">Total volume</span>
+                                    <span class="value">187K ETH</span>
+                                </div>
+                            </div>
+                        </div>
+
+                         <!-- Art Collection 3 -->
+                         <div class="collection-card" data-category="art">
+                            <div class="collection-image">
+                                <img src="images/art3.jpg" alt="Pixel Masterpieces">
+                            </div>
+                            <h3>Pixel Masterpieces</h3>
+                            <div class="collection-details">
+                                <div class="price-info">
+                                    <span class="label">Floor</span>
+                                    <span class="value">1.87 ETH</span>
+                                </div>
+                                <div class="price-info">
+                                    <span class="label">Total volume</span>
+                                    <span class="value">124K ETH</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="price-info">
-                        <span class="label">Total volume</span>
-                        <span class="value">352K ETH</span>
-                    </div>
-                </div>
-                <div class="collection-image">
-                    <img src="images/NFT2.png" alt="Art Collection">
-                </div>
-                <h3>Digital Dreamscapes</h3>
-                <div class="collection-details">
-                    <div class="price-info">
-                        <span class="label">Floor</span>
-                        <span class="value">3.13 ETH</span>
-                    </div>
-                    <div class="price-info">
-                        <span class="label">Total volume</span>
-                        <span class="value">352K ETH</span>
-                    </div>
-                </div>
+                </section>
             </div>
 
-            <!-- Music Collections -->
-            <div class="collection-image">
-                <img src="images/music 1" alt="Music Collection">
-            </div>
-            <h3>The Trip Out</h3>
-            <div class="collection-details">
-                <div class="price-info">
-                    <span class="label">Floor</span>
-                    <span class="value">3.13 ETH</span>
+            <!-- Collectibles Collections -->
+            <section class="category-section" id="collectibles-collections">
+                <h2 class="category-title">Collectibles Collections</h2>
+                <div class="collections-grid">
+
+                    <!-- Collectibles Collection 1 -->
+                    <div class="collection-card" data-category="collectibles">
+                        <div class="collection-image">
+                            <img src="images/NFTs 1.jpg" alt="Digital Dreamscapes">
+                        </div>
+                        <h3>Digital Dreamscapes</h3>
+                        <div class="collection-details">
+                            <div class="price-info">
+                                <span class="label">Floor</span>
+                                <span class="value">3.13 ETH</span>
+                            </div>
+                            <div class="price-info">
+                                <span class="label">Total volume</span>
+                                <span class="value">352K ETH</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Collectibles Collection 2 -->
+                    <div class="collection-card" data-category="collectibes">
+                        <div class="collection-image">
+                            <img src="images/NFT2.png" alt="Abstract Wonders">
+                        </div>
+                        <h3>Abstract Wonders</h3>
+                        <div class="collection-details">
+                            <div class="price-info">
+                                <span class="label">Floor</span>
+                                <span class="value">2.45 ETH</span>
+                            </div>
+                            <div class="price-info">
+                                <span class="label">Total volume</span>
+                                <span class="value">187K ETH</span>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Collectibles Collection 3 -->
+                     <div class="collection-card" data-category="collectibes">
+                        <div class="collection-image">
+                            <img src="images/art3.jpg" alt="Pixel Masterpieces">
+                        </div>
+                        <h3>Pixel Masterpieces</h3>
+                        <div class="collection-details">
+                            <div class="price-info">
+                                <span class="label">Floor</span>
+                                <span class="value">1.87 ETH</span>
+                            </div>
+                            <div class="price-info">
+                                <span class="label">Total volume</span>
+                                <span class="value">124K ETH</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="price-info">
-                    <span class="label">Total volume</span>
-                    <span class="value">352K ETH</span>
+            </section>
+        
+            <!-- Photography collections -->
+            <section class="category-section" id="photography-collections">
+                <h2 class="category-title">Photography Collections</h2>
+                <div class="collections-grid">
+                    <!-- Photography Collection 1 -->
+                    <div class="collection-card" data-category="photography">
+                        <div class="collection-image">
+                            <img src="images/NFTs 1.jpg" alt="Digital Dreamscapes">
+                        </div>
+                        <h3>Digital Dreamscapes</h3>
+                        <div class="collection-details">
+                            <div class="price-info">
+                                <span class="label">Floor</span>
+                                <span class="value">3.13 ETH</span>
+                            </div>
+                            <div class="price-info">
+                                <span class="label">Total volume</span>
+                                <span class="value">352K ETH</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Photography Collection 2 -->
+                    <div class="collection-card" data-category="photography">
+                        <div class="collection-image">
+                            <img src="images/NFT2.png" alt="Abstract Wonders">
+                        </div>
+                        <h3>Abstract Wonders</h3>
+                        <div class="collection-details">
+                            <div class="price-info">
+                                <span class="label">Floor</span>
+                                <span class="value">2.45 ETH</span>
+                            </div>
+                            <div class="price-info">
+                                <span class="label">Total volume</span>
+                                <span class="value">187K ETH</span>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Photography Collection 3 -->
+                     <div class="collection-card" data-category="photography">
+                        <div class="collection-image">
+                            <img src="images/art3.jpg" alt="Pixel Masterpieces">
+                        </div>
+                        <h3>Pixel Masterpieces</h3>
+                        <div class="collection-details">
+                            <div class="price-info">
+                                <span class="label">Floor</span>
+                                <span class="value">1.87 ETH</span>
+                            </div>
+                            <div class="price-info">
+                                <span class="label">Total volume</span>
+                                <span class="value">124K ETH</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
+
         </div>
     </div>
 </body>
+
+<script>
+    
+</script>
