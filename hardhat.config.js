@@ -8,7 +8,7 @@ module.exports = {
     ganache: {
       url: "http://127.0.0.1:7545",
       accounts: {
-        mnemonic: "army swear pelican pill stem blouse local coast neglect rich figure can", 
+        mnemonic: "battle kiss upset primary fatal sorry couch puzzle valid miss glad cool", 
       },
       chainId: 1337
     }
